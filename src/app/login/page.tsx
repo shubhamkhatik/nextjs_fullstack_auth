@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import { toast } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -39,6 +39,7 @@ export default function LoginPage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
+      <Toaster position="top-center" reverseOrder={false} />
       <h1>{loading ? "Processing" : "Login"}</h1>
       <hr />
 
@@ -64,7 +65,7 @@ export default function LoginPage() {
         onClick={onLogin}
         className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
       >
-       {buttonDisabled ? "No login" : "login here"}
+        {buttonDisabled ? "No login" : "login here"}
       </button>
       <Link href="/signup">Visit Signup page</Link>
     </div>
