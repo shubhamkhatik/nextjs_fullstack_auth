@@ -17,10 +17,12 @@ export default function ForgotPasswordPage() {
       const response = await axios.post("api/users/forgotpassword", { email });
       console.log("Email Sent", response.data);
       toast.success("check email to reset password")
+      toast.success(response.data.message);
       router.push("/login");
     } catch (error: any) {
       console.log("reset password fail " + error.message);
       toast.error("check email again")
+      toast.error(error.message);
 
     } finally {
       setLoading(false);

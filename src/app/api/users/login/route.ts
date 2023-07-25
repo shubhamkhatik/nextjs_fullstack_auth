@@ -27,6 +27,13 @@ export async function POST(request: NextRequest) {
     if (!validPassword) {
       return NextResponse.json({ error: "Invalid password" }, { status: 400 });
     }
+    const Verified=user.isVerified
+    if (!Verified) {
+      return NextResponse.json(
+        { error: "User not verified please verify from your mail" },
+        { status: 400 }
+      );
+    }
     console.log(user);
 
     //create token data
