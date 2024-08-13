@@ -24,9 +24,15 @@ export default function SignupPage() {
       console.log("Signup success", response.data);
       router.push("/login");
     } catch (error: any) {
-      console.log("Signup failed", error.message);
+      setLoading(false); 
 
-      toast.error(error.message);
+    if (error.response) {
+      const errorMessage = error.response.data.error || 'An error occurred custom msg.';
+      toast.error(errorMessage);
+    } else {
+      // Handle other types of errors (e.g., network issues)
+      toast.error('Network error or other unexpected issue.');
+    }
     } finally {
       setLoading(false);
     }

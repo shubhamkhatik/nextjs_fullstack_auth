@@ -39,6 +39,8 @@ export default function LoginPage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
+      <div>After signup success, need to verify the mail, we use mailtrap service for testing purpose</div>
+
       <Toaster position="top-center" reverseOrder={false} />
       <h1>{loading ? "Processing" : "Login"}</h1>
       <hr />

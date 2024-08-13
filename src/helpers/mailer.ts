@@ -47,6 +47,9 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
     const mailresponse = await transport.sendMail(mailOptions);
     return mailresponse;
   } catch (error: any) {
+    console.log("error in sendmail fn catch part");
+
     throw new Error(error.message);
+
   }
 };

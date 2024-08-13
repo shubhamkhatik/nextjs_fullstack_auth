@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
     if (!validPassword) {
       return NextResponse.json({ error: "Invalid password" }, { status: 400 });
     }
-    const Verified=user.isVerified
+    const Verified = user.isVerified;
     if (!Verified) {
       return NextResponse.json(
         { error: "User not verified please verify from your mail" },
@@ -44,8 +44,7 @@ export async function POST(request: NextRequest) {
     };
     //create token
     const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET!, {
-      // expiresIn: "1d",
-      expiresIn: "100000",
+      expiresIn: '10m',
     });
 
     const response = NextResponse.json({
